@@ -1,4 +1,4 @@
-name: CI
+name: Test plugin
 
 on: [push, pull_request]
 
@@ -13,12 +13,12 @@ jobs:
       DEPLOY_GTK_VERSION: 3
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
 
     - name: Setup dependencies
       run: |
         sudo apt-get update -y -qq
-        sudo apt-get install -y -qq libgtk-3-0 libgtk-3-dev wget tree
+        sudo apt-get install -y -qq dpkg-dev libgtk-3-0 libgtk-3-dev gir1.2-gtk-3.0 wget tree libgirepository1.0-dev libfuse2
 
     - name: Download external binairies
       run: |
